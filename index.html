@@ -635,12 +635,8 @@
     padding: 1rem 0.5rem;
     border-radius: 10px;
     transition: background 0.2s, transform 0.2s;
-    filter: grayscale(100%);
-    opacity: 0.7;
   }
   .logo-item:hover {
-    filter: grayscale(0%);
-    opacity: 1;
     transform: translateY(-2px);
     background: var(--bg-soft);
   }
@@ -920,11 +916,12 @@
     background: #fff;
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: 1.75rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
     position: relative;
+    overflow: hidden;
   }
   .post-card:hover {
     transform: translateY(-3px);
@@ -938,6 +935,41 @@
     margin-bottom: 1.25rem;
     padding-bottom: 1.25rem;
     border-bottom: 1px solid var(--border);
+  }
+  .post-img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg-soft);
+    position: relative;
+  }
+  .post-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+  .post-card:hover .post-img-wrap img { transform: scale(1.03); }
+  .post-img-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-soft) 100%);
+    color: var(--text-muted);
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .post-img-placeholder svg { opacity: 0.4; }
+  .post-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
   .post-avatar {
     width: 44px;
@@ -1179,9 +1211,8 @@
     <div>
       <div class="eyebrow reveal"><span class="dot"></span> Available for Junior SOC &amp; Cloud Security roles</div>
       <h1 class="reveal d1">
-        Cybersecurity<br>
-        built on <span class="serif">vigilance</span><br>
-        and precision.
+        Securing networks,<br>
+        protecting <span class="serif">assets</span>.
       </h1>
       <p class="hero-desc reveal d2">
         Hi, I'm <strong>Ritesh</strong>. I'm an MSc Cybersecurity student at National College of Ireland and a <strong>CompTIA Security+</strong> certified SOC analyst. I love hunting threats, building detections, and making cloud environments harder to break into.
@@ -1656,6 +1687,21 @@
 
   <div class="posts-grid">
     <article class="post-card">
+      <div class="post-img-wrap">
+        <!--
+          HOW TO ADD YOUR POST IMAGE:
+          1. Take a screenshot of your LinkedIn post (or use the post's cover image)
+          2. Save it as: post-security.jpg
+          3. Upload to the same folder as index.html
+          4. Remove the placeholder div below and uncomment the img tag
+        -->
+        <!-- <img src="post-security.jpg" alt="How I Cracked CompTIA Security+ in 1 Month"> -->
+        <div class="post-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Add post-security.jpg</span>
+        </div>
+      </div>
+      <div class="post-body">
       <div class="post-header">
         <div class="post-avatar">RI</div>
         <div>
@@ -1677,9 +1723,18 @@
         <span class="featured">★ Top Post</span>
         <a href="https://www.linkedin.com/posts/ritesh-indore_how-i-cracked-comptia-security-in-1-month-activity-7421541978498252801-EYBR" target="_blank" rel="noopener" class="post-link">Read post →</a>
       </div>
+      </div>
     </article>
 
     <article class="post-card">
+      <div class="post-img-wrap">
+        <!-- <img src="post-datadog.jpg" alt="Cloud Monitoring with Datadog and AWS"> -->
+        <div class="post-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Add post-datadog.jpg</span>
+        </div>
+      </div>
+      <div class="post-body">
       <div class="post-header">
         <div class="post-avatar">RI</div>
         <div>
@@ -1700,6 +1755,7 @@
       <div class="post-footer">
         <span></span>
         <a href="https://www.linkedin.com/posts/ritesh-indore_aws-datadog-cloudsecurity-activity-7438600553590562816-eodC" target="_blank" rel="noopener" class="post-link">Read post →</a>
+      </div>
       </div>
     </article>
   </div>
